@@ -10,10 +10,12 @@ RUN apk update \
             zlib-dev \
             patch \
             icu-dev
-
+RUN set -ex \
+  && apk --no-cache add \
+    postgresql-dev
 RUN apk add --no-cache $PHPIZE_DEPS \
     && pecl install -f xdebug \
-    && docker-php-ext-install opcache bcmath intl pdo pdo_mysql  \
+    && docker-php-ext-install opcache bcmath intl pdo pdo_mysql  pdo pdo_pgsql \
     && docker-php-ext-enable xdebug opcache bcmath intl pdo pdo_mysql  \
     && rm -f /var/lib/apt/lists/*
 
@@ -27,7 +29,6 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
 
 CMD ["php-fpm", "-F"]
 
-COPY . /var/www/server
-WORKDIR /var/www/server
+WORKDIR /var/www/hirfa
 
 EXPOSE 9000
