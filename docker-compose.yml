@@ -4,16 +4,17 @@ services:
   database:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-hirfa}
+      POSTGRES_DB: hirfa
       # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
-      POSTGRES_USER: ${POSTGRES_USER:-root}
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
     volumes:
-      - db-data:/var/lib/postgresql/data:rw
+      - hirfa-data:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
     networks:
       - dev
+
   nginx:
     build:
       context: docker/nginx
@@ -32,7 +33,7 @@ services:
       context: docker/php
     restart: on-failure
     volumes:
-      - ./:/var/www/server:cached
+      - .:/var/www/hirfa:cached
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini:ro
     depends_on:
       - database
@@ -46,6 +47,5 @@ services:
       - dev
 networks:
   dev:
-    driver: bridge
 volumes:
-  db-data:
+  hirfa-data:
