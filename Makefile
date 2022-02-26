@@ -36,7 +36,7 @@ composer-install: ## Command reads the composer.json file to resolves the depend
 
 composer-update: ## Resolve all dependencies of the project and write the exact versions into composer.lock
 	@echo -e "\e[32mUpdate dependencies...\e[0m"
-	$(COMPOSER) update  
+	$(COMPOSER) update
 ##
 ## Database
 ##---------------------------------------------------------------------------
@@ -89,7 +89,17 @@ security-check: vendor                                                          
 composer-valid: ## Checks if your composer.json is valid.
 	@echo -e "\e[32mRunning composer validate...\e[0m"
 	$(COMPOSER) valid
+cc: ## Clear the cache of the specify env
+	@echo -e "\e[32mCache clear...\e[0m"
+	$(CONSOLE) cache:clear --env=$(env)
 
+cc-test: ## Clear the cache for the test environment
+	@echo -e "\e[32mCache test clear...\e[0m"
+	make cc env=test
+
+cc-dev: ## Clear the cache for the dev environment
+	@echo -e "\e[32mCache dev clear...\e[0m"
+	make cc env=dev
 ##
 ## Tests
 ##---------------------------------------------------------------------------
