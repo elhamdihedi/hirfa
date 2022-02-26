@@ -36,7 +36,7 @@ composer-install: ## Command reads the composer.json file to resolves the depend
 
 composer-update: ## Resolve all dependencies of the project and write the exact versions into composer.lock
 	@echo -e "\e[32mUpdate dependencies...\e[0m"
-	$(COMPOSER) update
+	$(COMPOSER) update  
 ##
 ## Database
 ##---------------------------------------------------------------------------
