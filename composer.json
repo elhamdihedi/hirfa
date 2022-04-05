@@ -6,7 +6,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=8.1.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^1.0",
@@ -16,52 +16,55 @@
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.2",
         "sensio/framework-extra-bundle": "^6.1",
-        "symfony/asset": "5.4.*",
-        "symfony/console": "5.4.*",
-        "symfony/doctrine-messenger": "5.4.*",
-        "symfony/dotenv": "5.4.*",
-        "symfony/expression-language": "5.4.*",
+        "symfony/asset": "6.0.*",
+        "symfony/console": "6.0.*",
+        "symfony/doctrine-messenger": "6.0.*",
+        "symfony/dotenv": "6.0.*",
+        "symfony/expression-language": "6.0.*",
         "symfony/flex": "^1.17|^2",
-        "symfony/form": "5.4.*",
-        "symfony/framework-bundle": "5.4.*",
-        "symfony/http-client": "5.4.*",
-        "symfony/intl": "5.4.*",
-        "symfony/mailer": "5.4.*",
-        "symfony/mime": "5.4.*",
+        "symfony/form": "6.0.*",
+        "symfony/framework-bundle": "6.0.*",
+        "symfony/http-client": "6.0.*",
+        "symfony/intl": "6.0.*",
+        "symfony/mailer": "6.0.*",
+        "symfony/mime": "6.0.*",
         "symfony/monolog-bundle": "^3.0",
-        "symfony/notifier": "5.4.*",
-        "symfony/process": "5.4.*",
-        "symfony/property-access": "5.4.*",
-        "symfony/property-info": "5.4.*",
-        "symfony/proxy-manager-bridge": "5.4.*",
-        "symfony/runtime": "5.4.*",
-        "symfony/security-bundle": "5.4.*",
-        "symfony/serializer": "5.4.*",
-        "symfony/string": "5.4.*",
-        "symfony/translation": "5.4.*",
-        "symfony/twig-bundle": "5.4.*",
-        "symfony/validator": "5.4.*",
-        "symfony/web-link": "5.4.*",
+        "symfony/notifier": "6.0.*",
+        "symfony/process": "6.0.*",
+        "symfony/property-access": "6.0.*",
+        "symfony/property-info": "6.0.*",
+        "symfony/proxy-manager-bridge": "6.0.*",
+        "symfony/runtime": "6.0.*",
+        "symfony/security-bundle": "6.0.*",
+        "symfony/serializer": "6.0.*",
+        "symfony/string": "6.0.*",
+        "symfony/translation": "6.0.*",
+        "symfony/twig-bundle": "6.0.*",
+        "symfony/validator": "6.0.*",
+        "symfony/web-link": "6.0.*",
         "symfony/webapp-meta": "^1.0",
         "symfony/webpack-encore-bundle": "^1.12",
-        "symfony/yaml": "5.4.*",
+        "symfony/yaml": "6.0.*",
+        "symfonycasts/verify-email-bundle": "^1.9",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "^6.7",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "friendsofphp/php-cs-fixer": "^3.6",
-        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan": "^1.3",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-doctrine": "^1.2",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpstan/phpstan-strict-rules": "^1.1",
         "phpstan/phpstan-symfony": "^1.1",
         "sebastian/phpcpd": "^6.0",
-        "symfony/debug-bundle": "5.4.*",
+        "symfony/debug-bundle": "6.0.*",
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^6.0",
-        "symfony/stopwatch": "5.4.*",
-        "symfony/web-profiler-bundle": "5.4.*"
+        "symfony/stopwatch": "6.0.*",
+        "symfony/web-profiler-bundle": "6.0.*"
     },
     "config": {
         "allow-plugins": {
@@ -75,20 +78,25 @@
         },
         "sort-packages": true
     },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
+
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/"
         }
     },
+    "autoload": {
+        "psr-4": {
+            "Symfony6\\": "src/Front/Infrastructure/Symfony6/",
+            "Front\\": "src/Front/"
+        }
+    },
     "replace": {
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*"
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*"
     },
     "scripts": {
         "auto-scripts": {
@@ -108,7 +116,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.4.*"
+            "require": "6.0.*"
         }
     }
 }
