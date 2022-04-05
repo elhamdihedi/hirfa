@@ -12,9 +12,8 @@ doctrine:
         mappings:
             App:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+                dir: '%kernel.project_dir%/src/Front/Infrastructure/Symfony6/Doctrine'
+                prefix: 'Symfony6\Doctrine'
 
 when@test:
     doctrine:

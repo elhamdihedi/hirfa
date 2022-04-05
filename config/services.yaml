@@ -10,15 +10,43 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
+#    App\:
+#        resource: '../src/'
+#        exclude:
+#            - '../src/DependencyInjection/'
+#            - '../src/Entity/'
+#            - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    Symfony6\Doctrine\:
+        resource: '../src/Front/Infrastructure/Symfony6/Doctrine/*'
+        tags: [ 'front.autowire' ]
+
+    Symfony6\:
+        resource: '../src/Front/Infrastructure/Symfony6/*'
+        exclude: '../src/Front/Infrastructure/Symfony6/{Doctrine,Kernel.php}'
+
+    Symfony4\Twig\:
+        resource: '../src/Front/Infrastructure/Symfony6/Twig'
+        tags: ['twig.extension']
+
+    Front\Domain\:
+        resource: '../src/Front/Domain/*'
+        exclude: '../src/Front/Domain/{**/Entity,**/Error,**/Model}'
+
+    Front\Presentation\:
+        resource: '../src/Front/Presentation/*'
+        exclude: '../src/Front/Presentation/{**/Entity,**/Error,**/Model}'
+
+    Symfony6\Controller\:
+        resource: '../src/Front/Infrastructure/Symfony6/Controller'
+        tags: [ 'controller.service_arguments' ]
+
+
+
+

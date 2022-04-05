@@ -1,7 +1,7 @@
 controllers:
-    resource: ../../src/Controller/
+    resource: ../../src/Front/Infrastructure/Symfony6/Controller/
     type: annotation
 
 kernel:
-    resource: ../../src/Kernel.php
+    resource: ../../src/Front/Infrastructure/Symfony6/Kernel.php
     type: annotation

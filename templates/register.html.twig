@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-content">
+            {{ 'register' }}
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ form_widget(form.email,{attr:{class:viewModel.errors.email is defined? 'invalid':''}}) }}
+                        {{ form_label(form.email) }}
+                        {% if viewModel.errors.email is defined %}
+                            <span class="helper-text" data-error="{{ viewModel.errors.email|trans }}"></span>
+                        {% endif %}
+                    </div>
+                    <div class="input-field col s6">
+                        {{ form_widget(form.name,{attr:{class:viewModel.errors.name is defined ? 'invalid':''}}) }}
+                        {{ form_label(form.name) }}
+                        {% if viewModel.errors.name is defined %}
+                            <span class="helper-text" data-error="{{ viewModel.errors.name|trans }}"></span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button type="submit" class="btn btn-full">S'inscrire</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
